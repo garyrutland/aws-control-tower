@@ -1,0 +1,18 @@
+---
+governedRegions:
+  - eu-west-1
+organizationStructure:
+  security:
+    name: Core
+centralizedLogging:
+  accountId: "${logging_account_id}"
+  configurations:
+    accessLoggingBucket:
+      retentionDays: "3650"
+    loggingBucket:
+      retentionDays: "365"
+  enabled: true
+securityRoles:
+  accountId: "${security_account_id}"
+accessManagement:
+  enabled: true

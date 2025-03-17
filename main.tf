@@ -19,6 +19,10 @@ provider "aws" {
   }
 }
 
+locals {
+  uuid = uuid()
+}
+
 data "aws_iam_policy" "control_tower_service_role_policy" {
   name = "AWSControlTowerServiceRolePolicy"
 }
@@ -45,12 +49,12 @@ resource "aws_organizations_organization" "this" {
 
 resource "aws_organizations_account" "logging" {
   name  = "Logging"
-  email = "logging@example.com"
+  email = "${var.email_account}+logging-${local.uuid}@${var.email_domain}"
 }
 
 resource "aws_organizations_account" "security" {
   name  = "Security"
-  email = "security@example.com"
+  email = "${var.email_account}+security-${local.uuid}@${var.email_domain}"
 }
 
 module "aws_control_tower_admin_role" {

@@ -18,3 +18,9 @@ tf_apply:
 
 tf_destroy:
 	$(TF_DOCKER_CMD) destroy
+
+tf_import:
+	$(TF_DOCKER_CMD) import '$(ADDRESS)' '$(ID)'
+
+tf_state_rm:
+	$(TF_DOCKER_CMD) state rm '$(ADDRESS)'
